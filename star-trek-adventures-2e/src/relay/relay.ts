@@ -21,7 +21,7 @@ import {
 } from './handlers/handlers';
 import { type GMAttr, gmAttrs } from './computed/gm';
 import { useStarTrekStore } from '@/sheet/stores';
-import { reRollAll } from '@/sheet/stores/rollStore/rollStore';
+import { reRollAllExt } from '@/sheet/stores/rollStore/rollStore';
 import { updateGMResources } from '@/sheet/stores/gmStore/gmStore';
 
 /* 
@@ -50,8 +50,7 @@ const relayConfig = {
       access to it through the passed in character object.
      */
     reRollAll: {
-      method: async (
-        props: {
+      method: (props: {
           dispatch: Dispatch;
           character: Character;
           messageId?: string;
@@ -61,9 +60,12 @@ const relayConfig = {
       ): Promise<void> => {
         console.log(`In reRollAll function`);
         console.log(`Reroll function arguments: ${JSON.stringify(args)}`);
+        console.log(`Reroll function arguments length: ${args.length}`);
         console.log(`Reroll function props: ${JSON.stringify(props)}`);
-        const [characterName] = args;
-        return reRollAll(props);
+        //const [argument,rollTitle] = args;
+        //console.log(`Reroll function argument: ${argument}`);
+        //console.log(`Reroll function argument: ${rollTitle}`);
+        return reRollAllExt(props,args[0]);
       },
     },
   },

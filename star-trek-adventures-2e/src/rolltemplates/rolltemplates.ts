@@ -28,7 +28,10 @@ type RollPost = {
     dice?: number[],
     rollResult?: any,
     critRange?: number,
-    complianceRange?: number,
+    complicationRange?: number,
+    reroll?: number,
+    arguments: string,
+    previousRoll: string,
   }
 };
 

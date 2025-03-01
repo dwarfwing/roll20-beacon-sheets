@@ -12,7 +12,11 @@
         {{/if}}
       </div>
     </div>
-    <div class="lcars__top-underbar"></div>
+    <div class="lcars__top-underbar">
+      {{#if reroll}}
+        <h6 class="info_reroll">Reroll {{reroll}}</h6>
+      {{/if}}
+    </div>
   </div>
   <div class="lcars__bottom">
     <ul class="lcars__bottom-sidebar">
@@ -29,7 +33,7 @@
     <div class="lcars__bottom-content">
       {{> @partial-block }}
       <div class="roll reroll">
-        <button class="reroll__button" data-sheet-action="reRollAll" data-args={{characterName}}> Reroll </button>
+        <button class="reroll__button" data-sheet-action="reRollAll" data-args="{{previousRoll}}"> Reroll All </button>
       </div>
     </div>
   </div>

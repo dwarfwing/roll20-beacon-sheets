@@ -76,6 +76,9 @@ rolltemplate.sta2 {
     &__top-underbar {
       height: 1.125rem;
       grid-column: span 3;
+      .info_reroll {
+        justify-self: center;
+      }
     }
 
     &__top-sidebar,
@@ -130,7 +133,10 @@ rolltemplate.sta2 {
         background-color: var(--bottom-sidebar);
         border-collapse: separate;
         grid-row: span 2;
-        height: 60px;
+        min-height: 40px;
+      }
+      li:last-of-type {
+        font-size: 0.8rem;
       }
     }
 
@@ -147,8 +153,8 @@ rolltemplate.sta2 {
       font-size: 1rem;
       line-height: 1rem;
       padding: 0 4px 0 4px;
-      border-left: 2px solid var(--rolltemplate-background-color);
-      border-right: 2px solid var(--rolltemplate-background-color);
+      //border-left: 2px solid var(--rolltemplate-background-color);
+      //border-right: 2px solid var(--rolltemplate-background-color);
       color: black;
     }
 
