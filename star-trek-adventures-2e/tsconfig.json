@@ -10,5 +10,11 @@
     {
       "path": "./tsconfig.vitest.json"
     }
-  ]
+  ],
+  "compilerOptions": {
+    "module": "NodeNext",
+    "strictNullChecks": false,
+    "noImplicitAny":  false,
+    "allowJs": true,
+  },
 }

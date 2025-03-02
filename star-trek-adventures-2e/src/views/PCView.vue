@@ -2,6 +2,7 @@
   <ThePCHeader />
   <hr>
   <main>
+    <ThePCinfo />
     <ThePCAttributes />
     <ThePCDepartments />
     <TheReadout />
@@ -12,6 +13,7 @@
 import ThePCAttributes from '@/components/PC/ThePCAttributes.vue';
 import ThePCDepartments from '@/components/PC/ThePCDepartments.vue';
 import ThePCHeader from '@/components/PC/ThePCHeader.vue';
+import ThePCinfo from '@/components/PC/ThePCinfo.vue';
 import TheReadout from '@/components/PC/TheReadout/TheReadout.vue';
 
 </script>

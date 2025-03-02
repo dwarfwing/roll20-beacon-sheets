@@ -7,6 +7,7 @@ import { useGMStore } from './gmStore/gmStore';
 import { useUIStore } from './uiStore/uiStore';
 import { useRollStore } from './rollStore/rollStore';
 import { useMilestoneStore } from './milestoneStore/milestoneStore';
+import { useCharacterStore } from './characterStore/characterStore';
 
 
 export const useStarTrekStore = defineStore('StarTrek', () => {
@@ -18,6 +19,7 @@ export const useStarTrekStore = defineStore('StarTrek', () => {
     roll: useRollStore(),
     stats: useStatsStore(),
     ui: useUIStore(),
+    character: useCharacterStore(),
   };
 
   const pageLoading = ref(false);

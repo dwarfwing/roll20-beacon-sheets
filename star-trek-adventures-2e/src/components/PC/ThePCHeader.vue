@@ -39,29 +39,29 @@
 </template>
 
 <script setup lang="ts">
-import { useGMStore } from '@/sheet/stores/gmStore/gmStore';
-import { useUIStore } from '@/sheet/stores/uiStore/uiStore';
-import { useStatsStore } from '@/sheet/stores/statsStore/statsStore';
-import { Switch, SwitchGroup, SwitchLabel } from "@headlessui/vue";
-import { computed, ref } from 'vue';
+  import { useGMStore } from '@/sheet/stores/gmStore/gmStore';
+  import { useUIStore } from '@/sheet/stores/uiStore/uiStore';
+  import { useStatsStore } from '@/sheet/stores/statsStore/statsStore';
+  import { Switch, SwitchGroup, SwitchLabel } from "@headlessui/vue";
+  import { computed, ref } from 'vue';
 
-const gmStore = useGMStore();
-const uiStore = useUIStore();
-const statsStore = useStatsStore();
+  const gmStore = useGMStore();
+  const uiStore = useUIStore();
+  const statsStore = useStatsStore();
 
-const editing = computed({
-  get: () => uiStore.editMode,
-  set: (newValue) => uiStore.editMode = newValue 
-})
-const determination = computed({
-  get: () => statsStore.conditionsFields.DETERMINATION.base,
-  set: (newValue) => statsStore.conditionsFields.DETERMINATION.base = newValue 
-})
-const stress = computed({
-  get: () => statsStore.conditionsFields.STRESS.base,
-  set: (newValue) => statsStore.conditionsFields.STRESS.base = newValue 
-})
-let maxstress = computed(() => statsStore.attributeFields.FITNESS.base);
+  const editing = computed({
+    get: () => uiStore.editMode,
+    set: (newValue) => uiStore.editMode = newValue 
+  })
+  const determination = computed({
+    get: () => statsStore.conditionsFields.DETERMINATION.base,
+    set: (newValue) => statsStore.conditionsFields.DETERMINATION.base = newValue 
+  })
+  const stress = computed({
+    get: () => statsStore.conditionsFields.STRESS.base,
+    set: (newValue) => statsStore.conditionsFields.STRESS.base = newValue 
+  })
+  let maxstress = computed(() => statsStore.attributeFields.FITNESS.base);
 
 
 </script>

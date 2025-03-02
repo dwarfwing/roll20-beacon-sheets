@@ -4,11 +4,13 @@
 @use "./pcLayout.scss";
 @use "./generics.scss";
 
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
-
+@import url('https://fonts.googleapis.com/css?family=Orbitron:wght@400..900|Aldrich:wght@400..900&display=swap');
+/* ALternate google fonts: Aldrich, Jura,Rajdhani, Michroma, Smooch Sans, Chathura, Quantico  */
 html {
   font-size: 16px;
-  font-family: "Orbitron"
+  font-family: "Orbitron";
+  font-family: "Aldrich";
+  text-transform: uppercase;
 }
 body {
   max-width: 100%;
