@@ -21,7 +21,7 @@ import {
 } from './handlers/handlers';
 import { type GMAttr, gmAttrs } from './computed/gm';
 import { useStarTrekStore } from '@/sheet/stores';
-import { reRollAll } from '@/sheet/stores/rollStore/rollStore'
+import { reRollAllExt } from '@/sheet/stores/rollStore/rollStore';
 import { updateGMResources } from '@/sheet/stores/gmStore/gmStore';
 
 /* 
@@ -50,20 +50,22 @@ const relayConfig = {
       access to it through the passed in character object.
      */
     reRollAll: {
-      method: async (
-        props: {
+      method: (props: {
           dispatch: Dispatch;
           character: Character;
           messageId?: string;
           dice?: Number;
         },
-        ...args:string[]
+        ...args: string[]
       ): Promise<void> => {
         console.log(`In reRollAll function`);
         console.log(`Reroll function arguments: ${JSON.stringify(args)}`);
+        console.log(`Reroll function arguments length: ${args.length}`);
         console.log(`Reroll function props: ${JSON.stringify(props)}`);
-        const [characterName] = args;
-        return reRollAll(props);
+        //const [argument,rollTitle] = args;
+        //console.log(`Reroll function argument: ${argument}`);
+        //console.log(`Reroll function argument: ${rollTitle}`);
+        return reRollAllExt(props,args[0]);
       },
     },
   },
@@ -76,7 +78,7 @@ export type SharedSettings = {
   momentum?: number;
   threat?: number;
   gmID?: string;
-}
+};
 
 // This is the typescript type for the initial values that the sheet will use when it starts.
 export type InitValues = {
@@ -88,7 +90,7 @@ export type InitValues = {
 };
 
 // Almost everything below here is Boilerplate and you probably want to keep it intact.
-export const initValues: InitValues = reactive({
+export const initValues = reactive<InitValues>({
   id: '',
   character: {
     attributes: {},
@@ -160,20 +162,20 @@ export const createRelay = async ({
   const relayPinia = async (context: PiniaPluginContext) => {
     if (context.store.$id !== primaryStore) return;
     const store = context.store;
-    
+
     dispatchRef.value = dispatch;
-    
+
     // Init Store
     const { attributes, ...profile } = initValues.character;
     store.hydrateStore(attributes, profile);
 
-    console.log(JSON.stringify(initValues))
+    console.log(JSON.stringify(initValues));
 
     // Beacon Provides access to settings, like campaign id for example
     store.setCampaignId(initValues.settings.campaignId);
     store.setPermissions(initValues.settings.owned, initValues.settings.gm);
 
-    updateGMResources(initValues.sharedSettings)
+    updateGMResources(initValues.sharedSettings);
 
     // Watch for changes
     store.$subscribe(() => {
@@ -189,7 +191,7 @@ export const createRelay = async ({
       blockUpdate.value = true;
       if (logMode) console.log('🔒🔴 locking changes');
       const { attributes, ...profile } = dispatch.characters[characterId];
-      console.log("pulse watcher",attributes)
+      console.log('pulse watcher', attributes);
       if (attributes.updateId === sheetId.value) {
         blockUpdate.value = false;
         return;
